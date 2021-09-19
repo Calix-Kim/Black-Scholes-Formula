@@ -140,11 +140,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bs_analytic.cpp" />
+    <ClCompile Include="bs_binomialtree.cpp" />
+    <ClCompile Include="bs_montecarlo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="normal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bs_analytic.h" />
+    <ClInclude Include="bs_binomialtree.h" />
+    <ClInclude Include="bs_montecarlo.h" />
     <ClInclude Include="normal.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

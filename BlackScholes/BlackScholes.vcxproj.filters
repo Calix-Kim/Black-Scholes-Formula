@@ -24,12 +24,24 @@
     <ClCompile Include="bs_analytic.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="bs_montecarlo.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="bs_binomialtree.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="normal.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="bs_analytic.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="bs_montecarlo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="bs_binomialtree.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

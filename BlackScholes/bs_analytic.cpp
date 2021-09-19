@@ -1,6 +1,7 @@
 #include "bs_analytic.h"
 #include "normal.h"
 #include <cmath>
+#include <iostream>
 
 double bsprice(double s, double k, double r, double  q, double  t, double sigma, OptionType type) {	//call:type = +1 or put:type = -1
 	double d1 = (std::log(s / k) + (r - q + 0.5 * sigma * sigma) * t) / (sigma * std::sqrt(t));
@@ -21,7 +22,15 @@ double bsvega(double s, double k, double r, double  q, double  t, double sigma) 
 	return vega;
 }
 
-double imivol(double s, double k, double r, double q, double t, double price, OptionType type) {	// imvol을 계산할 때 vega가 필요!!
+double imvol(double s, double k, double r, double q, double t, double price, OptionType type) {	// imvol을 계산할 때 vega가 필요!!
 
-	return 0;
+	double x0 = 0.1;
+	double tol = 1e-8;
+	double error = 100; // std::abs(bsprice(s, k, r, q, t, x0, type) - price);
+	while (error > tol) {
+		double x1 = x0 - (bsprice(s, k, r, q, t, x0, type) - price) / bsvega(s, k, r, q, t, x0);
+		error = std::abs(bsprice(s, k, r, q, t, x1, type) - price);
+		x0 = x1;
+	}
+	return x0;
 }

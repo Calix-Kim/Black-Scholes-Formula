@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{eb083f02-6c0d-45c1-abab-b5d93fc99817}</ProjectGuid>
-    <RootNamespace>BlackScholes</RootNamespace>
+    <ProjectGuid>{3cf00b80-bc1b-40ea-b88e-2d6a7df3ed0a}</ProjectGuid>
+    <RootNamespace>BlackScholesClass</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>BlackScholes_function</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,17 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bs_analytic.cpp" />
-    <ClCompile Include="bs_binomialtree.cpp" />
-    <ClCompile Include="bs_montecarlo.cpp" />
+    <ClCompile Include="..\BlackScholes\normal.cpp" />
+    <ClCompile Include="date.cpp" />
+    <ClCompile Include="gbm_process.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="normal.cpp" />
+    <ClCompile Include="plainvanillaoption.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bs_analytic.h" />
-    <ClInclude Include="bs_binomialtree.h" />
-    <ClInclude Include="bs_montecarlo.h" />
-    <ClInclude Include="normal.h" />
+    <ClInclude Include="..\BlackScholes\normal.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="date.h" />
+    <ClInclude Include="gbm_process.h" />
+    <ClInclude Include="plainvanillaoption.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

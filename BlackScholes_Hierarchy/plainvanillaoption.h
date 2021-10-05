@@ -1,11 +1,11 @@
 #pragma once
-
 #include "option.h"
+#include "payoff.h"
 
 class PlainVanillaOption : public Option {
 public:
 	PlainVanillaOption(double k, Date mat, OptionType type):
-		Option(k, mat, type){}
+		Option(k, mat, type, new PlainVanillaPayoff(k, type)) {}
 	PlainVanillaOption() : Option() {}
 	double price();	//오버라이딩 Over-riding, 함수 오버로딩 Overloading
 	double vega();

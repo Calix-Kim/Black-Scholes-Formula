@@ -145,6 +145,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="normal.cpp" />
     <ClCompile Include="option.cpp" />
+    <ClCompile Include="payoff.cpp" />
     <ClCompile Include="plainvanillaoption.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +154,7 @@
     <ClInclude Include="gbm_process.h" />
     <ClInclude Include="normal.h" />
     <ClInclude Include="option.h" />
+    <ClInclude Include="payoff.h" />
     <ClInclude Include="plainvanillaoption.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

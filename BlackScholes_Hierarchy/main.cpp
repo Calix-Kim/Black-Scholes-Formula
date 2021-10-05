@@ -1,8 +1,30 @@
 #include <iostream>
+#include <vector>
 #include "date.h"
 #include "gbm_process.h"
 #include "plainvanillaoption.h"
 #include "binaryoption.h"
+
+// Overloading 
+//void printPrice(PlainVanillaOption inst) {
+//	std::cout << "Vanilla Price = " << inst.price() << std::endl;	
+//}
+//
+//void printPrice(Option inst) {
+//	std::cout << "Option Price = " << inst.price() << std::endl;
+//}
+//
+//void printPrice(BinaryOption inst) {
+//	std::cout << "Binary Price = " << inst.price() << std::endl;
+//}
+
+void printPrice(Option* inst, std::string productType){
+	std::cout << productType << " Price = " << 
+		inst->price() << " | " <<
+		inst->mcprice() << " | " <<
+		inst->bntprice() << " | " <<
+		std::endl;
+}
 
 int main() {
 
@@ -10,27 +32,34 @@ int main() {
 
 	GBMProcess p1(100, 0.01, 0.01, 0.15);
 	p1.setDate(d1);
+	std::vector<Option*> inst;
+	inst.push_back(
+		new PlainVanillaOption(100, Date(2020, 12, 15), OptionType::Put));
+	inst.push_back(
+		new BinaryOption(100, Date(2020, 12, 15), OptionType::Call));
+	inst.push_back(
+		new PlainVanillaOption(100, Date(2021, 1, 15), OptionType::Put));
+	inst.push_back(
+		new BinaryOption(100, Date(2021, 2, 15), OptionType::Call));
+	inst.push_back(
+		new PlainVanillaOption(100, Date(2021, 3, 15), OptionType::Put));
+	inst.push_back(
+		new BinaryOption(100, Date(2021, 4, 15), OptionType::Call));
 
-	Option inst0(100, Date(2020, 12, 15), OptionType::Put);
-	PlainVanillaOption inst1(100, Date(2020, 12, 15), OptionType::Put);
-	BinaryOption inst2(100, Date(2020, 12, 15), OptionType::Call);
-	inst0.setProcess(p1);
-	inst1.setProcess(p1);
-	inst2.setProcess(p1);
-
-	for (int i = 0; i <= 40; ++i) {
-		double spot = 80.0 + i;
+	for (int i = 0; i <= 0; ++i) {
+		double spot = 100;
 		p1.setSpot(spot);
-		inst0.setProcess(p1);
-		inst1.setProcess(p1);
-		inst2.setProcess(p1);
-		//std::cout << spot << " : " << inst.price() << " | "
-		//	<< inst.vega() << " | "
-		//	<< inst.imp_vol(inst.price()) << std::endl;
-		std::cout << spot << " : " << inst0.price() << " | "
-			<< inst1.price() << " | "
-			<< inst2.price() << std::endl;
+		for(int j=0; j<inst.size(); ++j)
+			inst[j]->setProcess(p1);
+
+		std::cout << spot << " : " << std::endl;
+		for (int j = 0; j < inst.size(); ++j)
+			printPrice(inst[j], "Option");
+
 	}
+
+	for (int j = 0; j < inst.size(); ++j)
+		delete inst[j];
 
 	return 0;
 }
